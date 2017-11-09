@@ -1,0 +1,26 @@
+Operador1	Operador2	Operando	Resultado	
+NUEVO	BLOQUE	?	->	
+2		=	a	
+NUEVO	BLOQUE	?	->	
+1		=	b	
+NUEVO	BLOQUE	?	->	
+3		=	c	
+NUEVO	BLOQUE	?	->	
+a	c	*	T1	
+T1		=	d	
+NUEVO	BLOQUE	?	->	
+d	d	*	T2	
+T2	a	/	T3	
+b	T3	+	T4	
+b	a	*	T5	
+5	T5	+	T6	
+T4	T6	>	10	
+			10	
+NUEVO	BLOQUE	?	->	
+"Entra "			IMPRIME	
+			30	
+			20	
+NUEVO	BLOQUE	?	->	
+NUEVO	BLOQUE	?	->	
+"No entra "			IMPRIME	
+			30	

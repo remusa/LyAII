@@ -1,0 +1,61 @@
+Operador1	Operador2	Operando	Resultado	Resultado Negativo	
+NUEVO	BLOQUE	?	->		
+2		=	a		
+NUEVO	BLOQUE	?	->		
+3		=	c		
+NUEVO	BLOQUE	?	->		
+a	c	*	T1		
+T1		=	d		
+NUEVO	BLOQUE	?	->		
+1		=	b		
+NUEVO	BLOQUE	?	->		
+5	4	+	T2		
+a	5	*	T3		
+T2	T3	-	T4		
+T4		=	vari		
+NUEVO	BLOQUE	?	->		
+a	5	*	T5		
+T5	false	*	T6		
+T6		=	dos		
+NUEVO	BLOQUE	?	->		
+false		=	e		
+NUEVO	BLOQUE	?	->		
+true		=	g		
+NUEVO	BLOQUE	?	->		
+e		=	x		
+NUEVO	BLOQUE	?	->		
+e		=	y		
+NUEVO	BLOQUE	?	->		
+"Ingresa un valor "		=	mens		
+NUEVO	BLOQUE	?	->		
+d	d	*	T7		
+T7	a	/	T8		
+b	T8	+	T9		
+b	a	*	T10		
+T9		=	z		
+NUEVO	BLOQUE	?	->		
+5.5	3.4	+	T11		
+T11		=	flo		
+NUEVO	BLOQUE	?	->		
+100			CALL		
+NUEVO	BLOQUE	?	->		
+			100		
+NUEVO	BLOQUE	?	->		
+			lin		
+NUEVO	BLOQUE	?	->		
+			arr		
+NUEVO	BLOQUE	?	->		
+lin			IMPRIME		
+NUEVO	BLOQUE	?	->		
+arr			IMPRIME		
+NUEVO	BLOQUE	?	->		
+5	8	<=	10	20	
+			10		
+NUEVO	BLOQUE	?	->		
+true		=	b2		
+			30		
+			20		
+NUEVO	BLOQUE	?	->		
+NUEVO	BLOQUE	?	->		
+false		=	b2		
+			30		

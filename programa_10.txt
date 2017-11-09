@@ -1,0 +1,38 @@
+#INICIO
+
+    int a = 2;
+    float b = 1;
+    int c = 3;
+    float d = a * c;
+
+    switch (5+8*6/4) {
+        case 1 {
+            msj "uno";
+                for (int i=0:i<10:i++) {
+                    msj "el resultado es" + i;
+                        if (a>d) {
+                            msj "entra";
+                        }
+                        else {
+                            msj "no entra";
+                        }
+                }
+            break;
+        }
+        case 2 {
+            msj "dos";
+                while (a < 10) {
+                    msj "entra while";
+                    a = a + 1;
+                        if (d<5) {
+                            msj "entra";
+                        }
+                        else {
+                            msj "no entra";
+                        }
+                }
+            break;
+        }
+    }
+
+#

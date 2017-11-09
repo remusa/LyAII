@@ -1,0 +1,27 @@
+﻿<enforce
+VI a=2;
+VI c=3;
+VI vari=5+4-(a*5);
+VF b=a*c;
+VB e=7;
+VB g=true;
+VB x=e OR g;
+VI i=0;
+VS mens="Ingresa un valor";
+VB z=NOT((a+b*c/a)>(vari*a));
+
+OM mens;
+CSF(VI i=0:i<10:i++){
+mat[6][3]=a;
+vec[i]=7;
+
+}
+CSI(8>3){
+}
+CSW(4>3){
+}
+CSS(b){
+}
+/>
+
+

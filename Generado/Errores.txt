@@ -1,0 +1,4 @@
+VARIABLE: x NO UTILIZADA
+---------------------------------------------
+ERROR EN: z FILA: 3 COLUMNA: 7 Variable no asignada
+ERROR EN: x FILA: 3 COLUMNA: 7 Variable Duplicada

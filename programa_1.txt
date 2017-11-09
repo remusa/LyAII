@@ -1,0 +1,35 @@
+#INICIO
+
+    int a = 2;
+    int vec[] = vec[6];
+    int mat[][] = mat[4][4];
+    int c = 3;
+    float d = a * c;
+    float b = 1;
+    int vari = 5 + 4 - (a * 5);
+    int mala = (a * 5) * false;
+
+    boolean e = false;
+    boolean g = true;
+    boolean x = e AND g;
+    boolean y = e OR g;
+
+    string mens = "Ingresa un valor";
+    boolean z = NOT((b+d*d/a)>(b*a));
+
+    float flo = 5.5 + 3.4;
+
+    function uno (a, c);
+
+    function uno(int lin,int arr) {
+        msj lin;
+        msj arr;
+    }
+
+    if((5<=8)) {
+        boolean b2 = true;
+    } else {
+        boolean b2 = false;
+    }
+
+#

@@ -1,0 +1,9 @@
+100 Variable Duplicada
+101 Error de tipos
+102 Variable no Encontrada
+103 Variable no asignada
+104 Funcion Duplicada
+105 Matriz o Vector Duplicado
+106 Matriz o Vector Indexada
+107 Parametros Incorrectos
+108 Funcion Inexistente

@@ -1,0 +1,32 @@
+#INICIO
+
+    int a = 2;
+    float b = 1;
+    int c = 3;
+    float d = a * c;
+
+    function uno (a, c);
+
+    if ((b+d*d/a)>(5+b*a)) {
+        msj "Entra";
+    } 
+    else {
+        msj "No entra";
+    }
+
+    switch(5+8*6/4){
+        case 1{
+            msj "uno";
+        }
+        case 2{
+            msj "dos";
+        }
+    }
+
+#
+
+function uno(int x1,int x2) {
+    x1 = 0;
+    x2 = 3;
+    return x2;
+}

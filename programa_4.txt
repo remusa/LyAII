@@ -1,0 +1,38 @@
+#INICIO
+
+    int a = 2;
+    float b = 1;
+    int c = 3;
+    float d = a * c;
+    int e;
+
+    function test (a, c);
+
+    switch (5+8*6/4) {
+        case 1 {
+            msj "uno";
+
+            if (a>d) {
+                for (int i=0:i<10:i++) {
+                    msj "el resultado es" + i;
+                }
+            else {
+                msj "if no entra";
+            }
+        }
+        case 2 {
+            msj "dos";
+            
+            while (a < 10) {
+                msj "entra while";
+                a = a + 1;
+            }
+        }
+    }
+
+#
+
+function test(int a,int c) {
+    e = a + c;
+    return e;
+}

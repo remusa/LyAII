@@ -1,0 +1,34 @@
+<enforce
+VI a=0;
+VI c;
+VI vec[]=vec[6];
+VI mat[][]=mat[4][4];
+VI d=2;
+VI c=3;
+VI vari=5+4-(a*5);
+F uno (a,c);
+
+CSF(VI i=0:i<10:i++){
+CSI(a>d OR c>a AND d<(a*4+3*(a+b))){
+}
+mat[6][3]=a;
+vec[i]=7;
+OM mens;
+
+}
+
+CSS(5+8*6/4){
+CSC 1{
+OM "uno";
+}
+CSC 2{
+OM "dos";
+}
+}
+
+F uno(VI lin,VI arr)
+{
+lin=0;
+arr=3;
+}
+/>

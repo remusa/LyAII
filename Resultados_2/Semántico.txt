@@ -1,0 +1,5 @@
+LEXEMA	TIPO	TOKEN	VALOR	returnNGLON	COLUMNA	TIPO2	PARAMETROS	FILAS	COLUMNAS	COLUMNAS
+a	int	V	2	3	3	7	-	-	-	-	-
+b	float	V	1	2	4	7	-	-	-	-	-
+c	int	V	3	1	5	7	-	-	-	-	-
+d	float	V	6	2	6	7	-	-	-	-	-

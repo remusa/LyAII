@@ -1,0 +1,26 @@
+
+a = 2
+
+b = 1
+
+c = 3
+
+T1 = a * c
+d = T1
+
+T2 = d * d
+T3 = T2 / a
+T4 = b + T3
+T5 = b * a
+T6 = 5 + T5
+IF T4 > T6 GOTO 10
+GOTO 20
+10:
+
+IMPRIME "Entra "
+GOTO 30
+20:
+
+
+IMPRIME "No entra "
+30:

@@ -1,0 +1,15 @@
+<enforce
+VI a;
+VI c=1000;
+VI d=1500;
+
+
+a=c+d;
+OM "La suma es: "+a;
+
+
+
+
+
+
+/>

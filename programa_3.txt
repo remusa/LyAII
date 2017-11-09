@@ -1,0 +1,43 @@
+#INICIO
+
+    int vec[] = vec[6];
+    int a = 2;
+    float b = 1;
+    int c = 3;
+    float d = a * c;
+
+    function test (a, c);
+
+    if (a>d OR c>a AND d<(a*4+3*(a+b)) {
+        msj "if2 entra";
+        if (a>d AND c>a) {
+                msj "if2 entra";
+
+                for (int i=0:i<10:i++) {
+                    msj "el resultado es" + i;
+                }
+        }
+        else {
+            msj "if2 no entra";
+
+            while (a < 10) {
+                msj "entra while";
+                a = a + 1;
+            }
+        }
+    }
+    else {
+        msj "if2 no entra";
+
+       
+    }
+
+    
+
+#
+
+function test(int x1,int x2) {
+    x1 = 0;
+    x2 = 3;
+    return x2;
+}

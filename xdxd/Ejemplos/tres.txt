@@ -1,0 +1,65 @@
+<enforce
+@ Pequeño automatas
+
+VI vec[]=vec[6];
+VI mat[][]=mat[4][4];
+VI a=2;
+VI c=3;
+VI vari=5+4-(a*5);
+VF d=a*c;
+VF b=1;
+VB e=false;
+VB g=true;
+VB x=e AND g;
+
+VS mens="Ingresa un valor";
+VB z=NOT((b+d*d/a)>(b*a));
+g=z;
+
+F uno (a,c);
+F insertar (c,c,e);
+
+OM mens;
+CSF(VI i=0:i<10:i++){
+mat[3][3]=a;
+vec[i]=7;
+
+}
+CSI(a>d){
+}
+CSF(VI l=0:l<10:l++){
+vec[i]=10;
+c=6+a;
+OM "el resultado es" + vec[i]; 
+}
+CSI(4>a){
+}
+CSF(VI j=0:j<10:j++){
+vec[i]=vari;
+OM "el resultado es" + vec[i]; 
+}
+CSI(8>3){
+}
+CSF(VI k=0:k<10:k++){
+vec[i]=a;
+OM "el resultado es" + vec[i]; 
+}
+CSW(4>3){
+}
+CSS(b){
+}
+/>
+F uno(VI lin,VI arr)
+{
+lin=0;
+arr=3;
+Re lin;
+}
+F insertar(VI car,VI otro, VB das)
+{
+car=0;
+otro=3;
+das=true;
+x=x OR das;
+RE x;					
+}

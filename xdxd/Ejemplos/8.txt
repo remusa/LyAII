@@ -1,0 +1,7 @@
+<ENFORCE
+CSI((a+b*c>d-e+f)OR(5+2-1>g*h-i)){
+OM "Hola";
+}CSE{
+OM "Hola2";
+}
+/>

@@ -1,0 +1,18 @@
+<enforce
+VI a;
+VI b;
+VI c;
+OM "Introduce a ";
+IR a;
+OM "Introduce b ";
+IR b;
+OM "La suma es: ";
+c=a+b;
+OM c;
+OM "La resta es: ";
+c=a-b;
+OM c;
+OM "La multiplicacion es: ";
+c=a*b;
+OM c;
+/>
