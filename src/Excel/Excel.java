@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Fany
+ * @author rms
  */
 public class Excel {
 

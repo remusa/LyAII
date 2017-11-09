@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  *
- * @author Fany
+ * @author rms
  */
 public class TraductorEn {
 
@@ -58,8 +58,8 @@ public class TraductorEn {
         Cuadruple bin;
         for (int i = 0; i < tabla.size(); i++) {
             bin = tabla.get(i);
- if (Character.isDigit(bin.r.charAt(0)) && bin.rn.equals("") && bin.op1.equals("")) {
-              
+            if (Character.isDigit(bin.r.charAt(0)) && bin.rn.equals("") && bin.op1.equals("")) {
+
                 if (pila.contains(bin.r)) {
 
                     en.setRet(bin.r);

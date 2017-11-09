@@ -2,6 +2,7 @@ package Vista;
 
 import CodigoIntermedio.Cuadruple;
 import CodigoIntermedio.TraductorEtiquetas;
+import Excel.TraductorEn;
 import Inicio.AText;
 import Lexico.Cambiar;
 import Optimizacion.Analizador;
@@ -173,12 +174,23 @@ public class Vista extends javax.swing.JFrame {
             }
             a.Cerrar();
             
-            pnlAnalisis.setSelectedIndex(2);
+            fillOptimizado(file5);
             
+            pnlAnalisis.setSelectedIndex(3);
+
             ////////////////////////////////////////////////////////////////////
             //ENSAMBLADOR
             ////////////////////////////////////////////////////////////////////
-            
+//            ArrayList<Cuadruple> table = new ArrayList();
+//            for (ArrayList<Cuadruple> b : analizador.bloques) {
+//                for (Cuadruple bin : b) {
+//                    table.add(bin);
+//                    System.out.println(" -- " + bin.op1 + " -- " + bin.op2 + " -- " + bin.op + " -- " + bin.r + " -- " + bin.rn);
+//                }
+//            }
+//
+//            TraductorEn ta = new TraductorEn(table);
+//            ta.init();
         } catch (IOException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -294,6 +306,24 @@ public class Vista extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void fillOptimizado(File file) {
+        taOptimizado.setText("");
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader(file));
+            String str;
+            while ((str = in.readLine()) != null) {
+                taOptimizado.append(str + "\n");
+            }
+        } catch (IOException e) {
+        } finally {
+            try {
+                in.close();
+            } catch (Exception ex) {
+            }
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -318,6 +348,9 @@ public class Vista extends javax.swing.JFrame {
         tbCodigoIntermedio = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         taCodigoIntermedio = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        taOptimizado = new javax.swing.JTextArea();
         barraMenu = new javax.swing.JMenuBar();
         mnuArchivo = new javax.swing.JMenu();
         itmAbrir = new javax.swing.JMenuItem();
@@ -463,6 +496,29 @@ public class Vista extends javax.swing.JFrame {
         );
 
         pnlAnalisis.addTab("tab3", pnlCodigoIntermedio);
+
+        taOptimizado.setColumns(20);
+        taOptimizado.setRows(5);
+        jScrollPane3.setViewportView(taOptimizado);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pnlAnalisis.addTab("tab4", jPanel1);
 
         javax.swing.GroupLayout pnlLayout = new javax.swing.GroupLayout(pnl);
         pnl.setLayout(pnlLayout);
@@ -665,7 +721,7 @@ public class Vista extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 //        analisis();
     }//GEN-LAST:event_formWindowOpened
 
@@ -690,8 +746,10 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JMenu mnuAnalisis;
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAyuda;
@@ -706,6 +764,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextArea taCodigoIntermedio;
     private javax.swing.JTextArea taEditor;
     private javax.swing.JTextArea taErroresSemanticos;
+    private javax.swing.JTextArea taOptimizado;
     private javax.swing.JTable tbCodigoIntermedio;
     private javax.swing.JTable tbLexico;
     private javax.swing.JTable tbSemantico;
