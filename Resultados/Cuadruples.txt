@@ -1,12 +1,13 @@
 Operador1	Operador2	Operando	Resultado	
-NUEVO	BLOQUE	?	->	
-z	1	+	T1	
-T1	2	+	T2	
-T2	0	+	T3	
-x	1	*	T4	
-T3	T4	+	T5	
-x	0	*	T6	
-T5	T6	+	T7	
-3	5	*	T8	
-T7	T8	+	T9	
-T9		=	x	
+B	C	*	T1	
+D	E	+	T2	
+T1	T2	*	T3	
+D	E	+	T4	
+T4	B	*	T5	
+T5	C	*	T6	
+T3	T6	+	T7	
+D	E	+	T8	
+B	T8	*	T9	
+T9	C	*	T10	
+T7	T10	+	T11	
+T11		=	x	

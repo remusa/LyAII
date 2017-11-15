@@ -160,37 +160,23 @@ public class Vista extends javax.swing.JFrame {
 
             File file5 = new File("Resultados/" + "Optimizado" + ".txt");
             a = new AText(file5, true);
-            for (ArrayList<Cuadruple> arg : analizador.bloques) {
-                for (Cuadruple arg1 : arg) {
-                    if (!arg1.op1.equals("") && !arg1.op2.equals("")) {
-                        a.Guardar(arg1.r + " = " + arg1.op1 + " " + arg1.op + " " + arg1.op2 + "\n");
-                    } else if (arg1.op1.equals("") && !arg1.op2.equals("")) {
-                        a.Guardar(arg1.r + " = " + arg1.op2 + "\n");
-                    } else if (!arg1.op1.equals("") && arg1.op2.equals("")) {
-                        a.Guardar(arg1.r + " = " + arg1.op1 + "\n");
-
-                    }
-                }
+            ArrayList<Cuadruple> arg = analizador.tabla;
+            DefaultTableModel modelow = (DefaultTableModel) tbCodigoIntermedio1.getModel();
+            for (Cuadruple arg1 : arg) {
+                modelow.addRow(new Object[]{
+                    arg1.op1,
+                    arg1.op2,
+                    arg1.op,
+                    arg1.r
+                });
             }
+
+            tbCodigoIntermedio1.setModel(modelow);
+
             a.Cerrar();
-            
-            fillOptimizado(file5);
-            
+
             pnlAnalisis.setSelectedIndex(3);
 
-            ////////////////////////////////////////////////////////////////////
-            //ENSAMBLADOR
-            ////////////////////////////////////////////////////////////////////
-//            ArrayList<Cuadruple> table = new ArrayList();
-//            for (ArrayList<Cuadruple> b : analizador.bloques) {
-//                for (Cuadruple bin : b) {
-//                    table.add(bin);
-//                    System.out.println(" -- " + bin.op1 + " -- " + bin.op2 + " -- " + bin.op + " -- " + bin.r + " -- " + bin.rn);
-//                }
-//            }
-//
-//            TraductorEn ta = new TraductorEn(table);
-//            ta.init();
         } catch (IOException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -306,24 +292,6 @@ public class Vista extends javax.swing.JFrame {
             }
         }
     }
-    
-    private void fillOptimizado(File file) {
-        taOptimizado.setText("");
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new FileReader(file));
-            String str;
-            while ((str = in.readLine()) != null) {
-                taOptimizado.append(str + "\n");
-            }
-        } catch (IOException e) {
-        } finally {
-            try {
-                in.close();
-            } catch (Exception ex) {
-            }
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -349,8 +317,8 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         taCodigoIntermedio = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        taOptimizado = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbCodigoIntermedio1 = new javax.swing.JTable();
         barraMenu = new javax.swing.JMenuBar();
         mnuArchivo = new javax.swing.JMenu();
         itmAbrir = new javax.swing.JMenuItem();
@@ -451,7 +419,7 @@ public class Vista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnlSemantico, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlSemantico2, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .addComponent(pnlSemantico2, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -491,15 +459,21 @@ public class Vista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pnlAnalisis.addTab("tab3", pnlCodigoIntermedio);
 
-        taOptimizado.setColumns(20);
-        taOptimizado.setRows(5);
-        jScrollPane3.setViewportView(taOptimizado);
+        tbCodigoIntermedio1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Operador1", "Operador2", "Operando", "Resultado"
+            }
+        ));
+        jScrollPane4.setViewportView(tbCodigoIntermedio1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -507,14 +481,14 @@ public class Vista extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -749,7 +723,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JMenu mnuAnalisis;
     private javax.swing.JMenu mnuArchivo;
     private javax.swing.JMenu mnuAyuda;
@@ -764,8 +738,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextArea taCodigoIntermedio;
     private javax.swing.JTextArea taEditor;
     private javax.swing.JTextArea taErroresSemanticos;
-    private javax.swing.JTextArea taOptimizado;
     private javax.swing.JTable tbCodigoIntermedio;
+    private javax.swing.JTable tbCodigoIntermedio1;
     private javax.swing.JTable tbLexico;
     private javax.swing.JTable tbSemantico;
     // End of variables declaration//GEN-END:variables

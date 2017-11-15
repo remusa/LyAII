@@ -1,0 +1,36 @@
+#INICIO
+
+	int a;
+	int b;
+	int c;
+
+	int n1;
+	int n2;
+	int n3;
+	int suma;
+	int con = 1;
+
+	while (con == 1){
+		msj "digite 1";
+		a = 1;
+		msj "digite 2";
+		b = 2;
+		msj "digite 3";
+		c = 3;
+
+		n1 = a;
+		n2 = b;
+		n3 = c;
+
+		if (n1<=n2 OR n2<=n3 OR n3<=n1){
+			msj "numero repetido";
+		}
+		else {
+			if (n1>n2 AND n1<n3 OR n1<n2 AND n1>n3) {
+				msj "el numero del centro es " + n1;
+			}
+		}
+
+	}
+	
+#

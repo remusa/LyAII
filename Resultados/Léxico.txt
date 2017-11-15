@@ -1,8 +1,7 @@
 TOKEN 	LEXEMA 	FILA 	COLUMNA 	DESCRIPCION
 0	#INICIO	1	0	INIT
-2	int	3	4	ENTERO
-V	x	3	7	VARIABLE
-21	=	3	9	OPERANDO
-X	z + 1 + 2 + 0 + ( x * 1 ) + ( x * 0 ) + 3 * 5	3	0	EXPRECION
-29	;	3	52	PUNTO_Y_CmsjA
-14	#	6	0	FIN
+V	x	3	0	VARIABLE
+21	=	3	1	OPERANDO
+X	B * C * ( D + E ) + ( D + E ) * B * C + B * ( D + E ) * C	3	0	EXPRECION
+29	;	3	31	PUNTO_Y_CmsjA
+14	#	5	0	FIN

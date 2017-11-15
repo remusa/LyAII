@@ -348,7 +348,7 @@ public class Analisis {
         while (ex.size() > 1) {
             for (int i = 0; i < ex.size(); i++) {
 
-                if (ex.get(i).equals("*") || ex.get(i).equals("+") || ex.get(i).equals("/") || ex.get(i).equals("-") || ex.get(i).equals("OR") || ex.get(i).equals("AND") || ex.get(i).equals(">") || ex.get(i).equals("<") || ex.get(i).equals(">=") || ex.get(i).equals("<=") || ex.get(i).equals("!=") || ex.get(i).equals("=")) {
+                if (ex.get(i).equals("*") || ex.get(i).equals("+") || ex.get(i).equals("/") || ex.get(i).equals("-") || ex.get(i).equals("OR") || ex.get(i).equals("AND") || ex.get(i).equals(">") || ex.get(i).equals("<") || ex.get(i).equals(">=") || ex.get(i).equals("<=")  || ex.get(i).equals("==")|| ex.get(i).equals("!=") || ex.get(i).equals("=")) {
                     String b = ex.get(i - 1);
                     String a = ex.get(i - 2);
                     String[] busB = new String[2];

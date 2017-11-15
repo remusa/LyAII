@@ -1,11 +1,12 @@
-
-T1 = z + 1
-T2 = T1 + 2
-T3 = T2 + 0
-T4 = x * 1
-T5 = T3 + T4
-T6 = x * 0
-T7 = T5 + T6
-T8 = 3 * 5
-T9 = T7 + T8
-x = T9
+T1 = B * C
+T2 = D + E
+T3 = T1 * T2
+T4 = D + E
+T5 = T4 * B
+T6 = T5 * C
+T7 = T3 + T6
+T8 = D + E
+T9 = B * T8
+T10 = T9 * C
+T11 = T7 + T10
+x = T11

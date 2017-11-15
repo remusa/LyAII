@@ -58,15 +58,16 @@ public class CodigoIntermedio {
 
     public boolean setIf(String T1, String O, String T2, String ev, String ef) {
         tabla.add(new Cuadruple(T1, T2, O, ev, ef));
+        tabla.add(new Cuadruple("", "", "GOTO", ef, ""));
         line = "IF " + T1 + " " + O + " " + T2 + " GOTO " + ev
                 + "\nGOTO " + ef;
         return this.Escribir(line);
     }
 
     public boolean setSpace() {
-        tabla.add(new Cuadruple("NUEVO", "BLOQUE", "?", "->", ""));
-        line = "";
-        this.Escribir(line);
+//        tabla.add(new Cuadruple("NUEVO", "BLOQUE", "?", "->", ""));
+//        line = "";
+//        this.Escribir(line);
         return true;
     }
 
@@ -126,7 +127,7 @@ public class CodigoIntermedio {
     }
 
     public String setGoE(int E) {
-        tabla.add(new Cuadruple("", "", "", "" + E, ""));
+        tabla.add(new Cuadruple("", "", "GOTO", "" + E, ""));
         line = "GOTO " + E;
 
         this.Escribir(line);
