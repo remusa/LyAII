@@ -6,7 +6,6 @@
 package Semantico;
 
 import Inicio.AText;
-import Lexico.Cambiar;
 import static Lexico.Inicio.todosErrores;
 import Postfijo.Postfijo;
 import java.io.File;
@@ -56,7 +55,7 @@ public class Analisis {
         f = new File("Tablas/errores.txt");
         at = new AText(f, false);
         lines = at.Leer();
-        
+
         for (String line : lines) {
             errores.put(line.substring(0, 3), line.substring(4));
         }
@@ -102,7 +101,7 @@ public class Analisis {
         f = new File("Tablas/tipos.txt");
         at = new AText(f, false);
         lines = at.Leer();
-        
+
         for (String line : lines) {
             cad = line.split(" ");
             // System.out.println("" + cad[0] + "--" + cad[1]);
@@ -291,49 +290,51 @@ public class Analisis {
     }
 
     public ArrayList<String> Posfijo(ArrayList<String> list) {
+        if (list.size() > 1) {
+            int i = 2;
+            String[] a;
+            ArrayList<String> l = new ArrayList();
 
-        int i = 2;
-        String[] a;
-        ArrayList<String> l = new ArrayList();
-
-        if (list.get(1).equals("=")) {//asignado
-            l.add(list.get(0));
-            l.add(list.get(1));
-
-        } else {//if
-            if (list.contains(">") || list.contains("<") || list.contains("==") || list.contains(">=") || list.contains("<=") || list.contains("!=")) {
+            if (list.get(1).equals("=")) {//asignado
                 l.add(list.get(0));
                 l.add(list.get(1));
 
-            } else {//
-                l.add(list.get(1));
-                l.add("=");
+            } else {//if
+                if (list.contains(">") || list.contains("<") || list.contains("==") || list.contains(">=") || list.contains("<=") || list.contains("!=")) {
+                    l.add(list.get(0));
+                    l.add(list.get(1));
+
+                } else {//
+                    l.add(list.get(1));
+                    l.add("=");
+                    i++;
+                }
+            }
+
+            if (list.get(i).contains("\"")) {//si es un valor texto
+                l.add(list.get(i));
+            } else {
+                a = list.get(i).split(" ");
+                for (int j = 0; j < a.length; j++) {
+                    l.add(a[j]);
+                }
+            }
+            i++;
+            while (i < list.size()) {
+                l.add(list.get(i));
                 i++;
             }
-        }
-
-        if (list.get(i).contains("\"")) {//si es un valor texto
-            l.add(list.get(i));
-        } else {
-            a = list.get(i).split(" ");
-            for (int j = 0; j < a.length; j++) {
-                l.add(a[j]);
+            Postfijo p = null;
+            try {
+                p = new Postfijo(l);
+            } catch (IOException ex) {
+                Logger.getLogger(Analisis.class.getName()).log(Level.SEVERE, null, ex);
             }
+            System.err.println("LIST " + list);
+            System.err.println("ARR N " + l);
+            return p.getPosfijo();
         }
-        i++;
-        while (i < list.size()) {
-            l.add(list.get(i));
-            i++;
-        }
-        Postfijo p = null;
-        try {
-            p = new Postfijo(l);
-        } catch (IOException ex) {
-            Logger.getLogger(Analisis.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.err.println("LIST " + list);
-        System.err.println("ARR N " + l);
-        return p.getPosfijo();
+        return list;
     }
 
     public String eval(ArrayList<String> val, int ubic) {
@@ -348,7 +349,7 @@ public class Analisis {
         while (ex.size() > 1) {
             for (int i = 0; i < ex.size(); i++) {
 
-                if (ex.get(i).equals("*") || ex.get(i).equals("+") || ex.get(i).equals("/") || ex.get(i).equals("-") || ex.get(i).equals("OR") || ex.get(i).equals("AND") || ex.get(i).equals(">") || ex.get(i).equals("<") || ex.get(i).equals(">=") || ex.get(i).equals("<=")  || ex.get(i).equals("==")|| ex.get(i).equals("!=") || ex.get(i).equals("=")) {
+                if (ex.get(i).equals("*") || ex.get(i).equals("+") || ex.get(i).equals("/") || ex.get(i).equals("-") || ex.get(i).equals("OR") || ex.get(i).equals("AND") || ex.get(i).equals(">") || ex.get(i).equals("<") || ex.get(i).equals(">=") || ex.get(i).equals("<=") || ex.get(i).equals("==") || ex.get(i).equals("!=") || ex.get(i).equals("=")) {
                     String b = ex.get(i - 1);
                     String a = ex.get(i - 2);
                     String[] busB = new String[2];
@@ -404,7 +405,7 @@ public class Analisis {
                     if (busA[0] != null || busB[0] != null) {
                         tipo = this.tipos.get(busA[0] + ex.get(i) + busB[0]);
                         // System.out.println("entra bbbbbbbbb " + tipo + busA[1] + busB[1] + ex.get(i));
-                        if (tipo != null) {
+                        if (tipo != null && !"-".equals(busA[1]) && !"-".equals(busB[1]) ) {
                             resul = this.Evaluacion(busA[1], busB[1], ex.get(i));
                             this.modificarUso(a);
                             this.modificarUso(b);
@@ -831,7 +832,6 @@ public class Analisis {
         int f, c;
         ArrayList<String> var;
         //lexema,tipo,token,valor,uso,ren,col,tipo2,parametros,filas,columnas /12
-        
 
         for (int i = 0; i < token.size(); i++) {
             l = token.get(i);

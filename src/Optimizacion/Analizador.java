@@ -15,10 +15,31 @@ import java.util.ArrayList;
 public class Analizador {
 
     public ArrayList<Cuadruple> tabla;
+    public ArrayList<ArrayList> bloques = new ArrayList();
+
     Optimizador opt = new Optimizador();
 
     public Analizador(ArrayList<Cuadruple> cuadruples) {
         this.tabla = cuadruples;
+    }
+
+    public void bloques() {//divide en bloques
+        ArrayList<Cuadruple> ax = null;
+        Cuadruple bin;
+        for (int i = 0; i < tabla.size(); i++) {//recorre el arreglo principal
+            bin = tabla.get(i);
+            if (bin.op1.equals("NUEVO")) {//cuando encuentra el identificado de salto de bloque
+                if (i == 0) {//si es el primero se crea
+                    ax = new ArrayList();
+                } else {//si no es el primero se guarda el anterior y se crea uno nuevo
+                    bloques.add(ax);
+                    ax = new ArrayList();
+                }
+            } else {
+                ax.add(bin);
+            }
+        }
+        bloques.add(ax);
     }
 
     public void reducir() {//resuelve las operaciones numericas y anomalas
@@ -41,7 +62,7 @@ public class Analizador {
                         b = 1;
                         bn.op1 = bin.op1;
                         huboCambio = true;
-                    } 
+                    }
                     if (bn.op2.equals(bin.r)) {//cuando es igual al operando 2
                         b = 1;
                         bn.op2 = bin.op1;
@@ -57,11 +78,12 @@ public class Analizador {
                 this.despliegue();
             } else if (!bin.r.equals("") && bin.op2.equals("") && bin.op.equals("=")) {//se verifica que solo tenga un operando
                 System.out.println("Sustituyendo --->" + bin.r);
-                for (Cuadruple bn : tabla) {//se busca en todos los temporales
+                for (int w = i; w < tabla.size(); w++) {//se busca en todos los temporales
+                    Cuadruple bn = tabla.get(i);
                     if (bn.op1.equals(bin.r)) {//cuando es igual al operando 1
                         bn.op1 = bin.op1;
                         huboCambio = true;
-                    } 
+                    }
                     if (bn.op2.equals(bin.r)) {//cuando es igual al operando 2
                         bn.op2 = bin.op1;
                         huboCambio = true;
@@ -81,11 +103,45 @@ public class Analizador {
                 b = tabla.get(i);
                 if (!bin.op1.equals("NUEVO") && bin.op1.equals(b.op1) && bin.op.equals(b.op) && bin.op2.equals(b.op2) && (!bin.op2.equals("") || !bin.op1.equals(""))) {//se comparan los elementos
                     System.out.println("----> " + bin.r + " == " + b.r);
-                    b.op1 = bin.r;
-                    b.op2 = "";
-                    b.op = "=";
+                    for (int j = i + 1; j < tabla.size(); j++) {
+                        Cuadruple cuadChecandoSustituir = tabla.get(j);
+                        //se compara contra todos
+                        if (cuadChecandoSustituir.op1.equals(b.r)) {
+                            cuadChecandoSustituir.op1 = bin.r;
+                        }
+                        if (cuadChecandoSustituir.op2.equals(b.r)) {
+                            cuadChecandoSustituir.op2 = bin.r;
+                        }
+
+                    }
+                    tabla.remove(i);
+                    i--;
                     huboCambio = true;
+                    this.despliegue();
+                } else if (bin.op.equals("+") || bin.op.equals("*")) {
+                    if (bin.op.equals(b.op)) {
+                        if ((bin.op1.equals(b.op1) && bin.op2.equals(b.op2))
+                                || (bin.op1.equals(b.op2) && bin.op2.equals(b.op1))) {
+                            System.out.println("----> " + bin.r + " == " + b.r);
+                            for (int j = i + 1; j < tabla.size(); j++) {
+                                Cuadruple cuadChecandoSustituir = tabla.get(j);
+                                //se compara contra todos
+                                if (cuadChecandoSustituir.op1.equals(b.r)) {
+                                    cuadChecandoSustituir.op1 = bin.r;
+                                }
+                                if (cuadChecandoSustituir.op2.equals(b.r)) {
+                                    cuadChecandoSustituir.op2 = bin.r;
+                                }
+
+                            }
+                            tabla.remove(i);
+                            i--;
+                            huboCambio = true;
+                            this.despliegue();
+                        }
+                    }
                 }
+
             }
         }
 
@@ -113,46 +169,111 @@ public class Analizador {
 
     boolean huboCambio = false;
 
+    private void SepararBloques() {
+        if (tabla.size() > 0) {
+            if (!tabla.get(0).op1.equals("NUEVO")) {
+                tabla.add(0, new Cuadruple("NUEVO", "BLOQUE", "?", "->", "."));
+            }
+            boolean buscar;
+            do {
+                System.out.println("jaja");
+                buscar = false;
+                int posicion = 0;
+                for (Cuadruple cuadruple : tabla) {
+                    if (cuadruple.op.equals("GOTO")) {
+                        String aDondeSalta = cuadruple.r;
+                        for (Cuadruple buscando : tabla) {
+                            if (buscando.r.equals(aDondeSalta) && buscando.op1.equals("") && buscando.op2.equals("") && buscando.op.equals("")) {
+                                posicion = tabla.indexOf(buscando);
+                                break;
+                            }
+                        }
+                        if (posicion != 0) {
+                            if (!tabla.get(posicion - 1).op1.equals("NUEVO")) {
+                                tabla.add(posicion, new Cuadruple("NUEVO", "BLOQUE", "?", "->", "."));
+                                buscar = true;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+            } while (buscar);
+            do {
+                System.out.println("jeje");
+                buscar = false;
+                for (Cuadruple cuadruple : tabla) {
+                    if (cuadruple.op.equals("GOTO") && !tabla.get(tabla.indexOf(cuadruple) + 1).op1.equals("NUEVO")) {
+                        tabla.add(tabla.indexOf(cuadruple) + 1, new Cuadruple("NUEVO", "BLOQUE", "?", "->", "."));
+                        buscar = true;
+                        break;
+                    }
+
+                }
+            } while (buscar);
+
+        }
+    }
+
     public void inicio() {
 
-        int a, b;
-        a = tabla.size();
-        b = 0;
+        SepararBloques();
 
-        do {
-            a = tabla.size();
+        this.despliegue();
 
-            System.out.println("Sumas con Cero");
-            SumasConCero();
-            this.despliegue();
+        bloques();
 
-            System.out.println("Sumas con Cero");
-            MultiplicacionesPorCero();
-            this.despliegue();
+        for (ArrayList bl : bloques) {
+            tabla = bl;
 
-            System.out.println("Sumas con Cero");
-            MultiplicacionesPorUno();
-            this.despliegue();
+            int a, b;
+            a = 0;
+            b = 0;
+            if (tabla != null) {
+                do {
+                    a = tabla.size();
 
-            System.out.println("Sumas con Cero");
-            DivisionesPorUno();
-            this.despliegue();
+                    System.out.println("Sumas con Cero");
+                    SumasConCero();
+                    this.despliegue();
 
-            System.out.println("--->Reducir");
-            reducir();
-            this.despliegue();
+                    System.out.println("Sumas con Cero");
+                    MultiplicacionesPorCero();
+                    this.despliegue();
 
-            System.out.println("--->Sustituir");
-            sustituir();
-            this.despliegue();
+                    System.out.println("Sumas con Cero");
+                    MultiplicacionesPorUno();
+                    this.despliegue();
 
-            System.out.println("--->Comparar");
-            comparar();
-            this.despliegue();
+                    System.out.println("Sumas con Cero");
+                    DivisionesPorUno();
+                    this.despliegue();
 
-            b = tabla.size();
-        } while (a != b && huboCambio == true);
+                    System.out.println("--->Reducir");
+                    reducir();
+                    this.despliegue();
 
+                    System.out.println("--->Sustituir");
+                    sustituir();
+                    this.despliegue();
+
+                    System.out.println("--->Comparar");
+                    comparar();
+                    this.despliegue();
+
+                    b = tabla.size();
+                } while (a != b && huboCambio == true);
+            }
+        }
+        tabla = new ArrayList<>();
+        for (ArrayList<Cuadruple> bl : bloques) {
+            if (bl != null) {
+                tabla.add(new Cuadruple("NUEVO", "BLOQUE", "?", "->", "."));
+                for (Cuadruple cuad : bl) {
+                    tabla.add(cuad);
+                }
+            }
+        }
     }
 
     private void MultiplicacionesPorCero() {

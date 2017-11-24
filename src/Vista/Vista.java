@@ -162,6 +162,10 @@ public class Vista extends javax.swing.JFrame {
             a = new AText(file5, true);
             ArrayList<Cuadruple> arg = analizador.tabla;
             DefaultTableModel modelow = (DefaultTableModel) tbCodigoIntermedio1.getModel();
+            for (int i = 0; i < tbCodigoIntermedio1.getRowCount(); i++) {
+                modelow.removeRow(i);
+                i -= 1;
+            }
             for (Cuadruple arg1 : arg) {
                 modelow.addRow(new Object[]{
                     arg1.op1,

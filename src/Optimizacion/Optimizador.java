@@ -50,7 +50,7 @@ public class Optimizador {
             b.op = "=";
             return true;
 
-        } else if (!b.op2.equals("") && !b.op1.equals("") && (b.op1.charAt(0) == '-' || b.op2.charAt(0) == '-' || (Character.isDigit(b.op1.charAt(0)) && Character.isDigit(b.op2.charAt(0))))) {//Numero Op Numero
+        } else if ((!b.op2.equals("") && !b.op1.equals("") && (b.op1.charAt(0) == '-' || b.op2.charAt(0) == '-' || (Character.isDigit(b.op1.charAt(0)) && Character.isDigit(b.op2.charAt(0))))) && !b.op.equals("<=")) {//Numero Op Numero
             b.op1 = this.evaluacion(b.op1, b.op2, b.op);
             b.op2 = "";
             b.op = "=";

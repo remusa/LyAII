@@ -1,5 +1,12 @@
 #INICIO
 
-x=B*C*(D+E)+(D+E)*B*C+B*(D+E)*C;
-	
+int a;
+int b;
+int x;
+
+go a;
+
+go b;
+
+x=a+b*a-b/a;
 #

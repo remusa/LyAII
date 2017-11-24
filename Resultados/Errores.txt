@@ -1,3 +1,5 @@
+VARIABLE: a NO UTILIZADA
+VARIABLE: b NO UTILIZADA
 VARIABLE: x NO UTILIZADA
 ---------------------------------------------
-ERROR EN: B FILA: 3 COLUMNA: 0 Variable no asignada
+ERROR EN: b*a FILA: 11 COLUMNA: 0 Error de tipos

@@ -1,13 +1,11 @@
 Operador1	Operador2	Operando	Resultado	
-B	C	*	T1	
-D	E	+	T2	
-T1	T2	*	T3	
-D	E	+	T4	
-T4	B	*	T5	
-T5	C	*	T6	
-T3	T6	+	T7	
-D	E	+	T8	
-B	T8	*	T9	
-T9	C	*	T10	
-T7	T10	+	T11	
-T11		=	x	
+			a	
+			b	
+			x	
+a			READ	
+b			READ	
+b	a	*	T1	
+a	T1	+	T2	
+b	a	/	T3	
+T2	T3	-	T4	
+T4		=	x	

@@ -1,5 +1,12 @@
 <INICIO
 
-x=B*C*(D+E)+(D+E)*B*C+B*(D+E)*C;
-	
+VI a;
+VI b;
+VI x;
+
+IR a;
+
+IR b;
+
+x=a+b*a-b/a;
 />

@@ -1,0 +1,32 @@
+#INICIO
+
+int a;
+int b;
+int c;
+string cadenita = "hola mundo! ";
+int suma;
+int con = 1;
+
+while (con == 1){
+msj "digite 1";
+go a;
+msj "digite 2";
+go b;
+msj "digite 3";
+go c;	
+
+if (a==b OR b==c OR c==a){
+int jaja = 0;
+msj "numero repetido";
+}
+if (a>b AND a<c OR a<b AND a>c) {
+msj "el numero del centro es " + a;
+}
+if (b>a AND b<3 OR b<a AND b>c) {
+msj "el numero del centro es " + b;
+}
+if (c>b AND c<a OR c<b AND c>a) {
+msj "el numero del centro es " + c;
+}
+}
+#

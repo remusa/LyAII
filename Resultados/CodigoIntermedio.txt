@@ -1,12 +1,10 @@
-T1 = B * C
-T2 = D + E
-T3 = T1 * T2
-T4 = D + E
-T5 = T4 * B
-T6 = T5 * C
-T7 = T3 + T6
-T8 = D + E
-T9 = B * T8
-T10 = T9 * C
-T11 = T7 + T10
-x = T11
+int a
+int b
+int x
+READ a
+READ b
+T1 = b * a
+T2 = a + T1
+T3 = b / a
+T4 = T2 - T3
+x = T4

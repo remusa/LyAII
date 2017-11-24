@@ -1,0 +1,5 @@
+#INICIO
+
+x=B*C*(D+E)+(D+E)*B*C+B*(D+E)*C;
+	
+#

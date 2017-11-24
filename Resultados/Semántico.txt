@@ -1,2 +1,4 @@
 LEXEMA	TIPO	TOKEN	VALOR	RENGLON	COLUMNA	TIPO2	PARAMETROS	FILAS	COLUMNAS	COLUMNAS
-x	#INICIO	V	S/R	0	3	0	-	-	-	-	-
+a	int	V	-	0	3	3	-	-	-	-	-
+b	int	V	-	0	4	3	-	-	-	-	-
+x	int	V	-	0	5	3	-	-	-	-	-
