@@ -1,5 +1,1 @@
-VARIABLE: a NO UTILIZADA
-VARIABLE: b NO UTILIZADA
-VARIABLE: x NO UTILIZADA
 ---------------------------------------------
-ERROR EN: b*a FILA: 11 COLUMNA: 0 Error de tipos

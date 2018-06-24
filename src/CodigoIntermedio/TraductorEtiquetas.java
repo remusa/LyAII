@@ -213,10 +213,10 @@ public class TraductorEtiquetas {
             lex = token.get(aux);
             //System.out.println(lex + " lex " + lexema.get(aux));
             switch (lex) {
-                case "26"://cerrar llave
+                case "26": //cerrar llave
                     return 0;
 
-                case "F"://funcion
+                case "F": //funcion
                     codigo.setSpace();
                     int ax = aux;
                     String eli = "";
@@ -243,7 +243,7 @@ public class TraductorEtiquetas {
                     }
                     break;
 
-                case "1"://opMat
+                case "1": //opMat
                     codigo.setSpace();
                     String tempo1;
                     System.out.println("-----------OPMAT---------");
@@ -264,7 +264,7 @@ public class TraductorEtiquetas {
                     }
                     break;
 
-                case "8"://while
+                case "8": //while
                     codigo.setSpace();
                     int EIw = this.getE();
                     int EVw = this.getE();
@@ -280,7 +280,7 @@ public class TraductorEtiquetas {
                     codigo.setE("" + EFw); //generar EV
                     break;
 
-                case "7"://if
+                case "7": //if
                     codigo.setSpace();
                     int EV = this.getE(); //inicio -> todos los valores iguales
                     int EF = this.getE();
@@ -297,7 +297,7 @@ public class TraductorEtiquetas {
                     this.Eaux = ES;
                     break;
 
-                case "35":
+                case "35": //else
                     codigo.setSpace();
                     aux += 2;
                     this.sentencia();
@@ -305,7 +305,7 @@ public class TraductorEtiquetas {
                     Eaux = 0;
                     break;
 
-                case "10"://for(int
+                case "10": //for(int
                     codigo.setSpace();
                     aux += 3;
                     String ot = lexema.get(aux);

@@ -1,12 +1,38 @@
 <INICIO
 
-VI a;
-VI b;
-VI x;
+    VI colegiatura;
+    VI nMaterias;
+    VI costoMateria;
+    VI promedio;
 
-IR a;
+    OM "materias: ";
+    IR nMaterias;
 
-IR b;
+    OM "costo materia: ";
+    IR costoMateria;
 
-x=a+b*a-b/a;
+    OM "promedio: ";
+    IR promedio;
+
+    colegiatura = costoMateria * nMaterias;
+
+    F test(promedio);
 />
+
+F test(VI promedio) {
+    CSI (promedio >= 90) {
+        colegiatura = colegiatura * 7;
+    }
+    CSI (promedio >= 80 AND promedio < 90) {
+        colegiatura = colegiatura * 9;
+    }
+    CSI (promedio < 80){
+        colegiatura = colegiatura * 11;
+    }
+    colegiatura = colegiatura / 10;
+
+    OM "colegiatura: ";
+    OM colegiatura;
+
+    RE colegiatura;
+}

@@ -7,7 +7,7 @@ package Inicio;
 
 import CodigoIntermedio.Cuadruple;
 import CodigoIntermedio.TraductorEtiquetas;
-import Excel.TraductorEn;
+import Ensamblador.TraductorEn;
 import Optimizacion.Analizador;
 import Semantico.GuardarTS;
 import java.awt.Color;

@@ -8,7 +8,7 @@ package Inicio;
 import Optimizacion.Analizador;
 import CodigoIntermedio.Cuadruple;
 import CodigoIntermedio.TraductorEtiquetas;
-import Excel.TraductorEn;
+import Ensamblador.TraductorEn;
 import Lexico.Cambiar;
 import Semantico.GuardarTS;
 import java.io.File;

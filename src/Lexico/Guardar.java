@@ -82,9 +82,8 @@ public class Guardar {
                 }
                 w.write();
                 w.close();
-                System.out.println(f.getAbsolutePath());
-
-                Process p = Runtime.getRuntime().exec("cmd /c" + f.getAbsolutePath());
+                //System.out.println(f.getAbsolutePath());
+                //Process p = Runtime.getRuntime().exec("cmd /c" + f.getAbsolutePath());
 
             } catch (WriteException ex) {
                 JOptionPane.showMessageDialog(null, "Error de escritura", "Error", JOptionPane.ERROR_MESSAGE);

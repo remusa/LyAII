@@ -1,12 +1,38 @@
 #INICIO
 
-int a;
-int b;
-int x;
+    int colegiatura;
+    int nMaterias;
+    int costoMateria;
+    int promedio;
 
-go a;
+    msj "materias: ";
+    go nMaterias;
 
-go b;
+    msj "costo materia: ";
+    go costoMateria;
 
-x=a+b*a-b/a;
+    msj "promedio: ";
+    go promedio;
+
+    colegiatura = costoMateria * nMaterias;
+
+    function test(promedio);
 #
+
+function test(int promedio) {
+    if (promedio >= 90) {
+        colegiatura = colegiatura * 7;
+    }
+    if (promedio >= 80 AND promedio < 90) {
+        colegiatura = colegiatura * 9;
+    }
+    if (promedio < 80){
+        colegiatura = colegiatura * 11;
+    }
+    colegiatura = colegiatura / 10;
+
+    msj "colegiatura: ";
+    msj colegiatura;
+
+    return colegiatura;
+}

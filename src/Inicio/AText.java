@@ -43,12 +43,10 @@ public class AText {
         }
         fr.close();
         fw.close();
-
     }
 
     public void Guardar(String ln) throws IOException {
         fw.write(ln);
-
     }
 
     public ArrayList<String> Leer() throws IOException {
@@ -67,7 +65,6 @@ public class AText {
         if (b) {
             fw.close();
         } else {
-
             fr.close();
         }
 

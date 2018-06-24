@@ -2,7 +2,7 @@ package Vista;
 
 import CodigoIntermedio.Cuadruple;
 import CodigoIntermedio.TraductorEtiquetas;
-import Excel.TraductorEn;
+import Ensamblador.TraductorEn;
 import Inicio.AText;
 import Lexico.Cambiar;
 import Optimizacion.Analizador;
@@ -45,6 +45,14 @@ public class Vista extends javax.swing.JFrame {
 
     public Vista() {
         initComponents();
+    }
+
+    private void runAssembly() {
+        try {
+            Process p = Runtime.getRuntime().exec("cmd /c C:/emu8086/emu8086 " + "C:/Users/rms/Documents/Projects/!LyAII/Resultados/Ensamblador.asm");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private void analisis() {
@@ -174,13 +182,27 @@ public class Vista extends javax.swing.JFrame {
                     arg1.r
                 });
             }
-
             tbCodigoIntermedio1.setModel(modelow);
-
             a.Cerrar();
 
-            pnlAnalisis.setSelectedIndex(3);
+            ////////////////////////////////////////////////////////////////////
+            //ENSAMBLADOR
+            ////////////////////////////////////////////////////////////////////
+            try {
+                ArrayList<Cuadruple> tablaEnsamblador = new ArrayList();
+                for (ArrayList<Cuadruple> b : analizador.bloques) {
+                    for (Cuadruple bin : b) {
+                        tablaEnsamblador.add(bin);
+                        System.out.println(" -- " + bin.op1 + " -- " + bin.op2 + " -- " + bin.op + " -- " + bin.r + " -- " + bin.rn);
+                    }
+                }
+                TraductorEn ta = new TraductorEn(tablaEnsamblador);
+                ta.init();
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
 
+            pnlAnalisis.setSelectedIndex(3);
         } catch (IOException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -331,6 +353,7 @@ public class Vista extends javax.swing.JFrame {
         itmAbrirTest = new javax.swing.JMenuItem();
         mnuAnalisis = new javax.swing.JMenu();
         itmSemantico = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         mnuAyuda = new javax.swing.JMenu();
         itmAyuda = new javax.swing.JMenuItem();
         itmAcerca = new javax.swing.JMenuItem();
@@ -569,6 +592,15 @@ public class Vista extends javax.swing.JFrame {
         });
         mnuAnalisis.add(itmSemantico);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem1.setText("Correr ensamblador");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuAnalisis.add(jMenuItem1);
+
         barraMenu.add(mnuAnalisis);
 
         mnuAyuda.setText("Ayuda");
@@ -707,6 +739,10 @@ public class Vista extends javax.swing.JFrame {
 //        analisis();
     }//GEN-LAST:event_formWindowGainedFocus
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        runAssembly();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
         new Vista().setVisible(true);
     }
@@ -723,6 +759,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

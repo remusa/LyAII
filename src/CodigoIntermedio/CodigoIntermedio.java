@@ -43,14 +43,14 @@ public class CodigoIntermedio {
         try {
             file.Cerrar();
             System.out.println("PATH: " + f.getAbsolutePath());
-            Process p = Runtime.getRuntime().exec("cmd /c" + f.getAbsolutePath());
-            BufferedInputStream bf = new BufferedInputStream(p.getInputStream());
-            int c = bf.read();
-
-            while (c != -1) {
-                System.out.print((char) c);
-                c = bf.read();
-            }
+//            Process p = Runtime.getRuntime().exec("cmd /c" + f.getAbsolutePath());
+//            BufferedInputStream bf = new BufferedInputStream(p.getInputStream());
+//            int c = bf.read();
+//
+//            while (c != -1) {
+//                System.out.print((char) c);
+//                c = bf.read();
+//            }
         } catch (IOException ex) {
             Logger.getLogger(CodigoIntermedio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -121,7 +121,7 @@ public class CodigoIntermedio {
     }
 
     public String setReturn() {
-        line = "RETORNA";
+        line = "RETURN";
         this.Escribir(line);
         return line;
     }
@@ -129,7 +129,6 @@ public class CodigoIntermedio {
     public String setGoE(int E) {
         tabla.add(new Cuadruple("", "", "GOTO", "" + E, ""));
         line = "GOTO " + E;
-
         this.Escribir(line);
         return "" + E;
     }
